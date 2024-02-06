@@ -1,0 +1,710 @@
+<html><head>
+ <title>CC2 2018 - Proyecto #1 - JPEG Image Handler</title>
+</head><body>
+<font color="darkgreen" size="6"><b>CC2 - Proyecto #1 - JPEG Image Handler</b></font>
+<hr>
+<hr>
+<b>Proyecto:</b> JPEG Image Handler<br>
+<b>Fecha de Entrega: </b> 30 de septiembre, 2018<br>
+<b>Proyecto en parejas o grupos de 3 personas</b><br>
+<b>Version de Especificacion: 1.0</b><br>
+<hr>
+
+
+<b>ATENCION</b>:  Este proyecto consume tiempo, asi que empiece lo mas 
+temprano que pueda. Esta es una asignacion individual, usted no puede compartir codigo
+con ningun otro grupo ni estudiante.
+<p>
+<font size="4"><b>Especificaciones Generales</b></font></p><p>
+El proyecto <b>JPEG Image Handler</b> trata de que usted aplique los conceptos aprendidos
+en clase de listas encadenadas y arreglos (bidimensionales) en el manejo de imagenes.
+Usted estara trabajando con imagenes originales con formato JPEG, las cuales deben ser
+trasladadas a formato BMP, manipuladas en ese formato y convertidas de regrso a JPEG.
+</p><p>
+<font size="4" color="navy"><b>Parte I:  JPEG a BMP y viceversa</b></font><br>
+La primera tarea que debe poder hacer su proyecto es poder leer una imagen en formato JPEG y
+convertirla a BMP, y viceversa. Para esta parte del proyecto (y solamente en las partes que
+se le indiquen),
+se le permite utilizar las clases <TT><B>ImageIO</B></TT> y <tt><b>BufferedImage</b></tt> ya
+definidas en Java.<br>
+Utilizando estas clases, usted debe <br>
+<ul>
+		<li>(1) Leer una imagen JPEG y generar una copia de la imagen en formato BMP. 
+		<li>(2) Leer una imagen BMP y generar una copia de la imagen en formato JPEG.
+</ul>
+Las imagenes convertidas a otro formato deben llevar el nombre de la imagen original con el prefijo <tt>converted</tt>, de tal manera que si su imagen se llama <tt>colores.jpeg</tt>, la
+imagen generada en formato bmp se llamaria <tt>converted-colores.bmp</tt>.
+<p>
+	Mas adelante se le indicara como se ejecutara esta funcionalidad en su programa.
+</p><p>
+<font size="4" color="navy"><b>Parte II:  Copia - JPEG</b></font><br>
+Para esta parte del proyecto debe poder leer una imagen en formato JPEG y generar una copia de
+la misma. La copia no debe ser manipulada de ninguna manera. En este caso debe utilizar las
+clases de Java antes mencionadas para poder leer la imagen jpeg, sin embargo no las puede utilizar
+para realizar la copia. Para esto debe hacer lo siguiente:
+<p>
+<ul>
+	<li>(1) Lea la imagen JPEG utilizando las clases de Java
+	<li>(2) Convierta la imagen a BMP
+	<li>(3) Cree una copia de esa imagen (BMP), utilizando la clase que se le provee
+	<li>(4) Convierta esa copia a JPEG
+</ul>
+Dentro del material que se le provee en para este proyecto, hay una clase <TT><B>BMPHandlerCopy</B></TT>, la cual debe usar para hacer la copia. 
+<p>
+La imagen copia debe llevar el nombre de la imagen original con el prefijo <tt>copia</tt>, de tal manera que si su imagen se llama <tt>colores.jpeg</tt>, la imagen copia se llamaria <tt>copia-colores.jpeg</tt>.
+</p><p>
+<font size="4" color="navy"><b>Parte III:  Rojo - Verde - Azul - Sepia</b></font>
+</p><p>
+En la primera parte del proyecto, usted entendera como estan formados los colores
+en cada pixel. Su objetivo es separar su imagen original en sus tres tonos,
+rojo, verde y azul.
+<br>
+</p><p><b>Imagen</b>:<br>
+Usted va a trabajar inicialmente con una imagen en formato JPEG, esta debe convertirla a BMP, 
+manipularla de esa manera y luego generar apartir de imagenes BMP, las imagenes JPEG corresponientes. A continuacion se le explica como esta definida una imagen BMP.<br> 
+Las imagenes estan divididas en pixels, en cada uno de los cuales se guarda un color
+especifico dependiendo de su posicion en la imagen. Este color, se forma por tonalidades 
+de rojo, verde y azul. La tonalidad (cantidad de color) es un numero del 0 al 255. 
+Por ejemplo si un pixel fuera a guardar el rojo puro, este se codificaria como 
+R=255 - V=0 - A=0, que significa que el color se representa por 255 de rojo, 0 
+de verde y 0 de azul.
+</p><p>
+Supongamos los siguientes pixeles, cada uno tiene un color, y al lado mostramos las intensidades de
+rojo, verde y azul que se utilizan para poder formar ese color especifico :
+</p><center>
+<table>
+<tbody><tr>
+  <td>
+  <table border="2">
+	<tbody><tr>
+	<td bgcolor="#559933" width="70" height="20"></td>
+	</tr>
+  </tbody></table>
+  </td>
+  <td>--&gt;
+  </td>
+  <td>
+	<table border="2">
+	<tbody><tr>
+	<td bgcolor="#550000" width="20" height="20"></td>
+	<td bgcolor="#009900" width="20" height="20"></td>
+	<td bgcolor="#000033" width="20" height="20"></td>
+	</tr>
+	</tbody></table>
+  </td>
+</tr>
+<tr>
+  <td>
+  <table border="2">
+	<tbody><tr>
+	<td bgcolor="#AA6688" width="70" height="20"></td>
+	</tr>
+  </tbody></table>
+  </td>
+  <td>--&gt;
+  </td>
+  <td>
+	<table border="2">
+	<tbody><tr>
+	<td bgcolor="#AA0000" width="20" height="20"></td>
+	<td bgcolor="#006600" width="20" height="20"></td>
+	<td bgcolor="#000088" width="20" height="20"></td>
+	</tr>
+	</tbody></table>
+  </td>
+</tr>
+<tr>
+  <td>
+  <table border="2">
+	<tbody><tr>
+	<td bgcolor="#00AAFF" width="70" height="20"></td>
+	</tr>
+  </tbody></table>
+  </td>
+  <td>--&gt;
+  </td>
+  <td>
+	<table border="2">
+	<tbody><tr>
+	<td bgcolor="#000000" width="20" height="20"></td>
+	<td bgcolor="#00AA00" width="20" height="20"></td>
+	<td bgcolor="#0000FF" width="20" height="20"></td>
+	</tr>
+	</tbody></table>
+  </td>
+</tr>
+
+<tr>
+  <td>
+  <table border="2">
+	<tbody><tr>
+	<td bgcolor="#8844AA" width="70" height="20"></td>
+	</tr>
+  </tbody></table>
+  </td>
+  <td>--&gt;
+  </td>
+  <td>
+	<table border="2">
+	<tbody><tr>
+	<td bgcolor="#880000" width="20" height="20"></td>
+	<td bgcolor="#004400" width="20" height="20"></td>
+	<td bgcolor="#0000AA" width="20" height="20"></td>
+	</tr>
+	</tbody></table>
+  </td>
+</tr>
+<tr>
+  <td>
+  <table border="2">
+	<tbody><tr>
+	<td bgcolor="#FFAA00" width="70" height="20"></td>
+	</tr>
+  </tbody></table>
+  </td>
+  <td>--&gt;
+  </td>
+  <td>
+	<table border="2">
+	<tbody><tr>
+	<td bgcolor="#FF0000" width="20" height="20"></td>
+	<td bgcolor="#00AA00" width="20" height="20"></td>
+	<td bgcolor="#000000" width="20" height="20"></td>
+	</tr>
+	</tbody></table>
+  </td>
+</tr>
+
+</tbody></table>
+</center>
+<p>
+</p><p>
+<br>Para esta parte su tarea es leer del formato bmp de la imagen, la matriz de pixels, guardando 
+los datos de tal forma que separe la matriz de rojo, verde y azul. 
+Tome en cuenta que el tamanio de dicha matriz sera el numero de pixels en la imagen, y por lo tanto debe 
+leer el tamaño de la imagen
+en el header. Para esta parte, debe utilizar lo anterior para generar las siguientes imagenes:
+</p><ul>
+<li> <b>(1)</b> Tres imagenes sacadas de la imagen original,
+una que contenga solo las tonalidades de rojo, otra las tonalidades de verde, y otra las tonalidades de azul.
+<p>
+Por ejemplo tenemos la siguiente imagen:
+</p><center>
+<table border="2">
+		<tbody><tr>
+		<td bgcolor="#990022" width="20" height="20"></td>
+		<td bgcolor="#EEAA00" width="20" height="20"></td>
+		<td bgcolor="#EEAA00" width="20" height="20"></td>
+		<td bgcolor="#880088" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#EEAA00" width="20" height="20"></td>
+		<td bgcolor="#0099AA" width="20" height="20"></td>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		<td bgcolor="#EEAA00" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#EEAA00" width="20" height="20"></td>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		<td bgcolor="#0099AA" width="20" height="20"></td>
+		<td bgcolor="#EEAA00" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#880088" width="20" height="20"></td>
+		<td bgcolor="#EEAA00" width="20" height="20"></td>
+		<td bgcolor="#EEAA00" width="20" height="20"></td>
+		<td bgcolor="#990022" width="20" height="20"></td>
+		</tr>
+</tbody></table>
+</center>
+<p>
+Usted deberia generar las siguientes imagenes:
+</p><center>
+<table>
+	<tbody><tr>
+	<td>
+	<table border="2">
+		<tbody><tr>
+		<td bgcolor="#990000" width="20" height="20"></td>
+		<td bgcolor="#EE0000" width="20" height="20"></td>
+		<td bgcolor="#EE0000" width="20" height="20"></td>
+		<td bgcolor="#880000" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#EE0000" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#EE0000" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#EE0000" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#EE0000" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#880000" width="20" height="20"></td>
+		<td bgcolor="#EE0000" width="20" height="20"></td>
+		<td bgcolor="#EE0000" width="20" height="20"></td>
+		<td bgcolor="#990000" width="20" height="20"></td>
+		</tr>
+	</tbody></table>
+	</td>
+	<td width="20">
+	</td>
+	<td>
+		<table border="2">
+		<tbody><tr>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		<td bgcolor="#009900" width="20" height="20"></td>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		<td bgcolor="#009900" width="20" height="20"></td>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		<td bgcolor="#00AA00" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		</tr>
+	</tbody></table>
+	</td>
+	<td width="20">
+	</td>
+	<td>
+		<table border="2">
+		<tbody><tr>
+		<td bgcolor="#000022" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#000088" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#0000AA" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#0000AA" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#000088" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#000000" width="20" height="20"></td>
+		<td bgcolor="#000022" width="20" height="20"></td>
+		</tr>
+	</tbody></table>
+	</td>
+
+	</tr>
+</tbody></table>
+</center>
+<br>
+</li><li><b>(2) </b> Una imagen en tonalidad sepia, resultante de la imagen original.
+ La cual se veria algo parecido a esto: 
+<br>
+    <center>
+        <br>
+<table border="2">
+		<tbody><tr>
+		<td bgcolor="#423B2E" width="20" height="20"></td>
+		<td bgcolor="#D2C79B" width="20" height="20"></td>
+		<td bgcolor="#D2C79B" width="20" height="20"></td>
+		<td bgcolor="#4F4636" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#D2C79B" width="20" height="20"></td>
+		<td bgcolor="#958567" width="20" height="20"></td>
+		<td bgcolor="#82745A" width="20" height="20"></td>
+		<td bgcolor="#D2C79B" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#D2C79B" width="20" height="20"></td>
+		<td bgcolor="#82745A" width="20" height="20"></td>
+		<td bgcolor="#958567" width="20" height="20"></td>
+		<td bgcolor="#D2C79B" width="20" height="20"></td>
+		</tr>
+		<tr>
+		<td bgcolor="#4F4636" width="20" height="20"></td>
+		<td bgcolor="#D2C79B" width="20" height="20"></td>
+		<td bgcolor="#D2C79B" width="20" height="20"></td>
+		<td bgcolor="#423B2E" width="20" height="20"></td>
+		</tr>
+</tbody></table>
+</center>
+<br>
+<p>Entonces, para esta parte usted tiene que leer una imagen JPEG y generar solamente 
+4 imagenes a partir de esa (recuede que tiene que convertir a BMP , generar 4 imagenes BMP y convertirlas a JPEG). Si el nombre del archivo de la imagen fuera <b><tt>Image.jpeg</tt></b>,
+las imagenes para esta fase deben tener los siguientes nombres respectivamente:
+</p><ul>
+<li> (1) <b><tt>Red-Image.jpeg, Green-Image.jpeg, Blue-Image.jpeg</tt></b>
+</li><li> (2) <b><tt>Sepia-Image.jpeg</tt></b>
+</li></ul>
+</li></ul>
+<br>
+<p><font size="4" color="navy"><b>Parte IV - Modificar Imagen</b></font></p><p>
+Para la cuarta parte del proyecto, tiene que generar las siguientes imagenes a partir de la imagen original (JPEG). Recuerde que debe hacer lo mismo, leer en JPEG, convertir a BMP, manipular en BMP y luego convertir imagenes generadas a JPEG.
+</p><ul>
+	<li><b>(1)</b> Imagen al revez de la original, rotando la imagen 180 grados sobre la 
+	linea horizontal de en medio. (<tt><b>Hrotation-Image.jpeg</b></tt>)
+<center>
+    <br>
+<table><tbody><tr>
+<td>
+<table border="2">
+	<tbody><tr>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#990000" width="40" height="20"></td>
+					<td bgcolor="#AA0000" width="40" height="20"></td>
+				</tr>
+				<tr border="0">
+					<td bgcolor="#660000" width="40" height="20"></td>
+					<td bgcolor="#CC0000" width="40" height="20"></td>
+				</tr>
+			</tbody></table>
+		</td>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#EEAA00" width="40" height="20"></td>
+					<td bgcolor="#BB9900" width="40" height="20"></td>
+				</tr>
+				<tr border="0">
+					<td bgcolor="#FFCC00" width="40" height="20"></td>
+					<td bgcolor="#996600" width="40" height="20"></td>				
+				</tr>
+			</tbody></table>		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#008800" width="40" height="20"></td>
+					<td bgcolor="#00AA00" width="40" height="20"></td>
+				</tr>
+				<tr border="0">
+					<td bgcolor="#005500" width="40" height="20"></td>
+					<td bgcolor="#00DD00" width="40" height="20"></td>
+				</tr>
+			</tbody></table>
+		</td>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#0033AA" width="40" height="20"></td>
+					<td bgcolor="#0055CC" width="40" height="20"></td>
+				</tr>
+				<tr border="0">
+					<td bgcolor="#001177" width="40" height="20"></td>
+					<td bgcolor="#0077FF" width="40" height="20"></td>				
+				</tr>
+			</tbody></table>		
+		</td>
+	</tr>
+</tbody></table>
+</td>
+<td width="40">
+----&gt;
+</td><td>
+<table border="2">
+	<tbody><tr>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#005500" width="40" height="20"></td>
+					<td bgcolor="#00DD00" width="40" height="20"></td>
+				</tr>
+				<tr border="0">
+					<td bgcolor="#008800" width="40" height="20"></td>
+					<td bgcolor="#00AA00" width="40" height="20"></td>
+				</tr>
+			</tbody></table>
+		</td>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#001177" width="40" height="20"></td>
+					<td bgcolor="#0077FF" width="40" height="20"></td>	
+				</tr>
+				<tr border="0">
+					<td bgcolor="#0033AA" width="40" height="20"></td>
+					<td bgcolor="#0055CC" width="40" height="20"></td>	
+				</tr>
+			</tbody></table>		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#660000" width="40" height="20"></td>
+					<td bgcolor="#CC0000" width="40" height="20"></td>				
+
+				</tr>
+				<tr border="0">
+					<td bgcolor="#990000" width="40" height="20"></td>
+					<td bgcolor="#AA0000" width="40" height="20"></td>
+				</tr>
+			</tbody></table>
+		</td>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#FFCC00" width="40" height="20"></td>
+					<td bgcolor="#996600" width="40" height="20"></td>							
+				</tr>
+				<tr border="0">
+					<td bgcolor="#EEAA00" width="40" height="20"></td>
+					<td bgcolor="#BB9900" width="40" height="20"></td>				
+			
+				</tr>
+			</tbody></table>		
+		</td>
+	</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</center>	
+
+	</li><li><b>(2)</b> Al reves de la imagen original, pero rotando 180 grados en el eje vertical
+	(<b><tt>Vrotation-Image.jpeg</tt></b>)
+<center>
+    <br>
+<table><tbody><tr>
+<td>
+<table border="2">
+	<tbody><tr>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#990000" width="40" height="20"></td>
+					<td bgcolor="#AA0000" width="40" height="20"></td>
+				</tr>
+				<tr border="0">
+					<td bgcolor="#660000" width="40" height="20"></td>
+					<td bgcolor="#CC0000" width="40" height="20"></td>
+				</tr>
+			</tbody></table>
+		</td>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#EEAA00" width="40" height="20"></td>
+					<td bgcolor="#BB9900" width="40" height="20"></td>
+				</tr>
+				<tr border="0">
+					<td bgcolor="#FFCC00" width="40" height="20"></td>
+					<td bgcolor="#996600" width="40" height="20"></td>				
+				</tr>
+			</tbody></table>		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#008800" width="40" height="20"></td>
+					<td bgcolor="#00AA00" width="40" height="20"></td>
+				</tr>
+				<tr border="0">
+					<td bgcolor="#005500" width="40" height="20"></td>
+					<td bgcolor="#00DD00" width="40" height="20"></td>
+				</tr>
+			</tbody></table>
+		</td>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#0033AA" width="40" height="20"></td>
+					<td bgcolor="#0055CC" width="40" height="20"></td>
+				</tr>
+				<tr border="0">
+					<td bgcolor="#001177" width="40" height="20"></td>
+					<td bgcolor="#0077FF" width="40" height="20"></td>				
+				</tr>
+			</tbody></table>		
+		</td>
+	</tr>
+</tbody></table>
+</td>
+<td width="40">
+----&gt;
+</td><td>
+<table border="2">
+	<tbody><tr>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#BB9900" width="40" height="20"></td>				
+					<td bgcolor="#EEAA00" width="40" height="20"></td>
+
+				</tr>
+				<tr border="0">
+					<td bgcolor="#996600" width="40" height="20"></td>				
+					<td bgcolor="#FFCC00" width="40" height="20"></td>
+				
+				</tr>
+			</tbody></table>		
+		</td>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#AA0000" width="40" height="20"></td>				
+					<td bgcolor="#990000" width="40" height="20"></td>
+
+				</tr>
+				<tr border="0">
+					<td bgcolor="#CC0000" width="40" height="20"></td>				
+					<td bgcolor="#660000" width="40" height="20"></td>
+
+				</tr>
+			</tbody></table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#0055CC" width="40" height="20"></td>				
+					<td bgcolor="#0033AA" width="40" height="20"></td>
+
+				</tr>
+				<tr border="0">
+					<td bgcolor="#0077FF" width="40" height="20"></td>					
+					<td bgcolor="#001177" width="40" height="20"></td>
+			
+				</tr>
+			</tbody></table>		
+		</td>
+		<td>
+			<table border="0">
+				<tbody><tr border="0">
+					<td bgcolor="#00AA00" width="40" height="20"></td>				
+					<td bgcolor="#008800" width="40" height="20"></td>
+
+				</tr>
+				<tr border="0">
+					<td bgcolor="#00DD00" width="40" height="20"></td>				
+					<td bgcolor="#005500" width="40" height="20"></td>
+
+				</tr>
+			</tbody></table>
+		</td>
+	</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+<br>	
+</center>		
+
+</li></ul>
+
+<br>
+</p><p><font size="4" color="navy"><b>Estructura del Proyecto</b></font></p><p>
+Para este proyecto se le proveen las siguientes clases en <tt><b>MaterialPJ1.zip</b></tt> :
+<ul>
+<li><tt><b>ImageHandler: </b></tt>Clase abstracta de la cual todos los handlers de este 
+proyecto deben heredar, y ser forzados a implementar los metodos de lectura de imagen original y generacion de imagenes.</li>
+<li><tt><b>BmpHandlerCopy: </b></tt>Handler que hereda de ImageHandler y crea una copia
+exacta de la imagen original en formato BMP. </li>
+<li><tt><b>JPEGHandler: </b></tt>Clase que representa la aplicacion principal, desde la
+cual se ejecutara el programa. Esta ya provee la opcion de generar una copia utilizando
+el BmpHandlerCopy, sin embargo debe ser modificada por su persona para agregar las opciones para archivos JPEG. Esta es solo para darle una guia de como deberia hacer con las demas.
+</li></ul>
+<p>
+Considerando lo anterior, su proyecto debe estar dividido en las siguientes clases:
+</p><ul>
+	<li>Clase <tt><b>JPEGtoBMPImage</b></tt>, la cual se encargue de leer una imagen JPEG y
+		genera una copia pero en formato BMP.
+	</li><li>Clase <tt><b>BMPtoJPEGImage</b></tt>, la cual se encargue de leer una imagen BMP y
+		genera una copia pero en formato JPEG.
+	<li>Clase <tt><b>JPEGImageCopy</b></tt>, la cual se encargue de leer una imagen JPEG y
+		crear una copia.
+    </li><li>Clase <tt><b>JPEGImageHandlerColors</b></tt>, la cual se encargue de generar las imagenes especificadas en la parte III del proyecto.
+    </li><li>Clase <tt><b>JPEGImageHandlerRotator</b></tt>, la cual se encargue de generar las imagenes especificadas en la parte IV del proyecto.
+    </li><li>Clase principal llamada <tt><b>JPEGHandler</b></tt>, la cual unicamente se debe encargar de mandar a llamar a las clases anteriores para ejecutar las clases que se les especifiquen.
+</li></ul>
+<p>
+Las clases <tt><b>JPEGtoBMPImage</b></tt>, <tt><b>BMPtoJPEGImage</b></tt>, <tt><b>JPEGImageCopy</b></tt>, <tt><b>JPEGImageHandlerColors</b></tt>, y <tt><b>JPEGImageHandlerRotator</b></tt> deben heredar de la clase abstracta <tt><b>ImageHandler</b></tt>, e implementar los metodos abstractos de lectura y generacion de archivos, los cuales se mandan a ejecutar por el metodo <tt><b>runHandler</b></tt> de la clase <tt><b>JPEGHandler</b></tt>.
+
+
+<p><font size="4" color="navy"><b>Forma de ejecutarlo</b></font></p><p>
+</p><ul>
+	<li>Como se habia dicho antes, la clase principal con la que se ejecutara su proyecto debe llamarse <tt>JPEGHandler</tt> (cuya primera version se le provee en el material del proyecto).
+	</li><li>El programa debe ejecutarse como <tt>JPEGHandler</tt> seguido de, 
+        generalmente, una bandera y el nombre de la imagen original. La 
+	bandera indicara que parte del proyecto se va a ejecutar, es decir el modo de ejecucion. 
+</li><li>Si la bandera es <b><tt>-tobmp</tt></b> su programa recibira un jpeg y devolvera un bmp (Parte I del proyecto).
+<pre>		java JPEGHandler -tobmp imagen.jpeg         
+</pre>
+</li><li>Si la bandera es <b><tt>-tojpeg</tt></b> su programa recibira un bmp y devolvera un jpeg (Parte I del proyecto).
+<pre>		java JPEGHandler -tojpeg imagen.bmp         
+</pre>
+</li><li>Si la bandera es <b><tt>-copy</tt></b> su programa solo debe ejecutar la Parte II del proyecto, es decir recibir un jpeg, realizar la copia y generar otro jpeg.
+<pre>		java JPEGHandler -copy imagen.jpeg
+</pre>
+	</li><li>Si la bandera es <b><tt>-colors</tt></b> su programa solo debe ejecutar la Parte III de este proyecto.
+<pre>		java JPEGHandler -colors imagen.jpeg         
+</pre>
+	</li><li>Si la bandera es <tt><b>-rotate</b></tt> su programa debe ejecutar las rotaciones de la  Parte IV de este proyecto.
+<pre>		java JPEGHandler -rotate imagen.jpeg
+</pre>
+	</li><li>Si la bandera es <tt><b>-all</b></tt> su programa debe ejecutar todas las partes de este proyecto, menos la parte II.
+<pre>		java JPEGHandler -all imagen.jpeg
+</pre>
+</li><li>Si la bandera es <tt><b>-help</b></tt>, usted debe listar las opciones de como se debe ejecutar el JPEGHandler
+<pre>		java JPEGHandler -help
+</pre>
+</li></ul>
+Si usted no cumple con estos modos de ejecucion, tendra CERO en su proyecto.
+<p>
+En la clase <tt><b>JPEGHandler</b></tt> se le provee un ejemplo de como debe utilizar <tt><b>runHandler</b></tt> para mandar a llamar cada uno de los Handlers dependiendo de la opcion de ejecucion que se haya elegido.
+<p>
+Le recordamos que la version de <tt><b>JPEGHandler</b></tt> que se le provee, es una version basica que debe ser modificada por su persona (menos el metodo que no se permite modificar) para casar con las condiciones descritas con anterioridad. Por ningun motivo su programa debe terminar por alguna Exception, por lo que debe considerar los errores que puedan suceder, para atraparlos y hacer algo al respecto.
+<p>
+Al mandar a ejecutar el programa, se deben generar las imagenes y ser guardadas en el mismo directorio en que se ejecuto (No en directorios adicionales). 
+
+</p><p><font size="4"><b>Observaciones:</b></font></p><p>
+Para realizar su proyecto debe tomar en cuenta lo siguiente y cumplir con las siguientes restricciones:
+</p><ul>
+	<li>Trabajaremos SOLO con imagenes de 640X480.
+	</li><li>Las unicas estructuras de datos que puede utilizar son: Arreglos, ArrayList y LinkedList.
+	</li><li>Recuerdese que el formato va al reves, es decir que BMP empieza a contar desde el pixel inferior izquierdo.
+	</li><li>Recuerde que en el formato BMP tiene dos bytes reservados (con valor cero) al final.
+	</li><li><b>IMPORTANTE: NO PUEDE UTILIZAR CLASES EN JAVA (NI OTROS PROGRAMAS/LIBRERIAS YA HECHAS) QUE HAGAN ESTE TRABAJO POR USTED. NO PUEDE
+	UTILIZAR CLASES EN JAVA QUE MANEJEN IMAGENES (lean atributos o modifiquen) a exepcion de
+	la transformacion de JPEG a BMP y viceversa.
+	Como por ejemplo la libreria: java.awt.Image (que incluye clases como BufferedImage), javax.imageIO, o la clase imageIO. Si hace esto, se le pondra cero en el proyecto. La manipulacion y generacion de la imagen debe estar programada por usted</b>
+	</li><li><b>Su proyecto NO debe implementar interfaz grafica, ni para puntos extra. </b>
+	
+</li></ul>
+
+<p><font size="4"><b>Entrega:</b></font><br>
+La entrega del proyecto se hace via GES, todas sus clases deben ir dentro de un archivo .zip llamado pj1-grupoN.zip. En donde "sucarnet" es SU numero de carnet, y N es el numero de grupo que se le asigne. Ejemplo: pj1-grupo10A.zip. Asegurese de mandar un email a cc2fisicc@galileo.edu con los integrantes de su grupo, ANTES del dia de la entrega del proyecto, para que se le asigne un numero antes de esa fecha.
+<br>
+
+</p><hr>
+<font color="navy">
+<i>cc2fisicc@galileo.edu</i>
+</font> 
+
+
+</body></html>

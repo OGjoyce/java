@@ -1,0 +1,11 @@
+1. BEGIN
+2. GET Kilometraje_inicial
+3. GET galones
+4. GET kilometraje_final
+5. total <-- kilometraje_inical - kilometraje_final
+6. IF total > kilometraje_final THEN
+7. DISPLAY "Calculo realizado correctamente"
+8. kilometros_por_galon <-- (total / galones)
+9. DISPLAY "kilometros_por_galon"
+10. END IF
+11. END

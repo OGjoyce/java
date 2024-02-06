@@ -1,0 +1,7 @@
+(display "Ingrese altura" )
+(define altura (read))
+(display "Ingrese peso" )
+(define peso (read))
+(define aux (square altura ))
+(define imc (/ peso aux))
+(display imc )

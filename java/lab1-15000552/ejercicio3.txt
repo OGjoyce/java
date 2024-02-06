@@ -1,0 +1,12 @@
+1. BEGIN
+2. GET edad
+3. IF edad < 1 THEN
+4. DISPLAY "Por favor ingrese una edad correcta de rango 1 o más"
+5. MHR <-- (edad - 220)
+6. DISPLAY "MHR"
+7. fat_burning <-- (MHR * 0.65)
+8. DISPLAY "fat_burning"
+9. ejercicio_cardiovascular <-- (MHR * 0.75)
+10. DISPLAY "ejercicio_cardiovascular"
+11. END IF
+12. END

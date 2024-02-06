@@ -1,0 +1,30 @@
+(define ((equation a b c ) x)
+ (lambda (x) (set! x (+ (* x x a) (* b x) c)
+   ))
+  x
+  )
+
+; NO MODIFIQUE ESTE CODIGO
+(define (main)
+  (newline)
+  (display "Lab #12 - Ejercicio #1\n\n")
+  (define a (- 5 (random 11)))
+  (define b (- 5 (random 11)))
+  (define c (- 5 (random 11)))
+  (display "Ingrese una posible solucion para\n")
+  (display "la ecuacion: ")
+  (display (string-append (number->string a) "x^2 + "
+                          (number->string b) "x + "
+                          (number->string c) "\n"))
+  (define x (read))
+  (if (number? x)
+      (let ((y ((equation a b c) x)))
+        (if (zero? y)
+            (display "Si es solucion :D")
+            (display "No es solucion :(")
+         )
+        (newline)
+       )
+      (display "Dato invalido")
+  )
+)(main)
